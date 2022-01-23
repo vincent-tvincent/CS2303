@@ -9,3 +9,4 @@ Yuancen Pu
 #include<stdlib.h>
 int polynomial(int, char*[]);
 #endif
+

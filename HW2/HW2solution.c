@@ -1,10 +1,10 @@
 #include "HW2header.h"
 
-int polynomial(int argc, char* argv[])
+int polynomial(int c, char* v[])
 {
-    int parameters[argc - 1];
-    for (int i = 1; i < argc; i++) {
-        parameters[i - 1] = *(argv[i]) - '0';
+    int parameters[c - 1];
+    for (int i = 1; i < c; i++) {
+        parameters[i - 1] = *(v[i]) - '0';
     }
     int answer = 0;
     for (int i = 1; i < sizeof(*(parameters)) / sizeof(parameters[0]); i++)
@@ -13,5 +13,4 @@ int polynomial(int argc, char* argv[])
     }
     return answer;
 }
-
 
