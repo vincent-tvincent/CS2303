@@ -5,7 +5,7 @@
 int main(int argc,char* argv[])
 {
      printf("%d", argc);
-    printf("%s\n",*argv);
+    printf("%s\n",argv[1]);
     return 0;
     // int i = 0;
     // printf("%d\n", argc);//输出argc
