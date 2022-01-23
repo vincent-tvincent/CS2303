@@ -7,6 +7,7 @@ Yuancen Pu
 #define HW2_HEADER
 #include <stdio.h>
 #include<stdlib.h>
+#include<math.h>
 int polynomial(int, char*[]);
 #endif
 

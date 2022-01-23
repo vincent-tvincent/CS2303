@@ -7,10 +7,12 @@ int polynomial(int c, char* v[])
         parameters[i - 1] = *(v[i]) - '0';
     }
     int answer = 0;
-    for (int i = 1; i < sizeof(*(parameters)) / sizeof(parameters[0]); i++)
+
+    for (int i = 1; i < c - 1; i++)
     {
-        answer += parameters[i] * parameters[0] ^ i; //a_i * x^power
+        answer += parameters[i] * pow(parameters[0],i);
     }
     return answer;
+
 }
 
