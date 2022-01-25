@@ -2,7 +2,7 @@
 
 int polynomial(int c, char* v[])
 {
-    int parameters[c - 1];
+    int* parameters =(int*) malloc(c * sizeof(int));
     for (int i = 1; i < c; i++) {
         parameters[i - 1] = *(v[i]) - '0';
     }
