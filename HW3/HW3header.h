@@ -32,6 +32,6 @@ board boardInit(int, int);
 block** anotherBlock(board,block*,int, int);
 block** pointerInit(board,int,int);
 block** randLocation(board);
-void swap(board,block**, block**); 
+void swap(block**, block**); 
 
 #endif 

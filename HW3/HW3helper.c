@@ -73,10 +73,14 @@ block** randLocation(board Board){
 
 /*
 return value: no return 
-this function consume two pointers of block pointers  and a board type value as the board, then swap the value of this two pointers
+this function consume two pointers of block pointers, then swap the value of this two pointers
 */
 void swap(board Board, block** pointer1, block** pointer2){
-    
+    block* block1 = *pointer1;
+    block* block2 = *pointer2;
+    int temp = block1->value;
+    block1->value = &(block2->value);
+    block2->value = &temp;
 }
 
 
