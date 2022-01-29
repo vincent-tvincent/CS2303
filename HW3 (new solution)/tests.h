@@ -12,15 +12,10 @@
 #include <stdlib.h>
 #include "Board.h"
 
-bool tests();
+void tests();
 
-bool testInit();
-bool testIsValid();
-bool testIsEligible();
-bool testSettle();
-bool testSavePayload();
-bool testPrintList();
-
-bool testpitch();
-
+bool testLoad();
+bool testRandChoose();
+bool testSwap();
+bool testSelect();
 #endif /* TESTS_H_ */

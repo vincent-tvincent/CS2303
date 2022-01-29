@@ -1,8 +1,5 @@
 /*
- * Board.c
- *
- *  Created on: Nov 9, 2021
- *      Author: theresesmith
+	group member: 
  */
 
 #include "Board.h"
@@ -47,11 +44,12 @@ void swap(int* theBoard, int nrows, int ncols,int row,int col){
 }
 
 int select(int* theBoard, int nRow, int nCol){
-	int randRow = rand()%nRow;
-	int randCol = rand()%nCol;
-	int* pointer = theBoard + randRow*nCol + randCol;
+	pair* coodinate = randChoose(nRow,nCol);
+	int* pointer = theBoard + (coodinate -> row)*nCol + coodinate -> col;
 	return *pointer;
 }
+
+
 
 
 

@@ -90,25 +90,45 @@ bool testSwapHelper(int row, int col)
 	swap(board,10,10,row,col);
 	
 	//judgement 
-	ok = pointer1 == 2 && pointer2 == 1; 
+	ok = *pointer1 == 2 && *pointer2 == 1; 
 	if(ok){
-		puts("start passed the test");
+		puts("swap passed the test");
 	}else{
-		puts("start did not pass the test");
+		puts("swap did not pass the test");
 	}
 
 	return ok;
 }
+
 //sorry for still write it in two methods, I'm too lazy to type in same thing too much times 
 bool testSwap(){
-	bool ok1 = testSwapeHelper(2,3);
-	bool ok2 = testSwapeHelper(10,2);
+	puts("start testing swap");
+	bool ok1 = testSwapHelper(2,3);
+	bool ok2 = testSwapHelper(10,2);
 	bool ok3 = testSwapHelper(2,1);
-	bool ok4 = testSwapeHelper(10,1);
+	bool ok4 = testSwapHelper(10,1);
 	return ok1 && ok2 && ok3 && ok4;
 }
 
 bool testSelect(){
+	bool ok = true;
+	//setup 
+	int* board = (int*) malloc(10*10*sizeof(int));
+	int* pointer = board;
+	//trial
 	
+	//judgement
+	
+	return ok;	
 }
+
+void tests(){
+	puts("start tests");
+	bool ok = testLoad() && testRandChoose() && testSwap() && testSelect();
+	if(ok){
+		puts("all test passed");
+	}else{
+		puts("test did not pass"); 
+	}
+};
 
