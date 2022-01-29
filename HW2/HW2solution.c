@@ -1,20 +1,22 @@
 #include "HW2header.h"
 
-int polynomial(char* peremeters[])
+int polynomial(int peremeters[])
 {
     int answer = 0;
-    for(int i = 1; i < sizeof(*peremeters)/sizeof(*peremeters[0]); i++) 
-    {   
-        answer += *peremeters[i] * *peremeters[0]^i; //a_i * x^power
+    for (int i = 1; i < sizeof(peremeters) / sizeof(peremeters[0]); i++)
+    {
+        answer += peremeters[i] * peremeters[0] ^ i; //a_i * x^power
     }
-    return answer; 
+    return answer;
 }
 
-int* argvToInt(int argc,char* argv[])
+
+//this function consume an array of type char and return an array of type integer. 
+int argvToInt(int argc, char* argv[])
 {
-    int result[argc];
-    for(int i = 1; i < argc; i++){
-        
+    int result[argc - 1];
+    for (int i = 1; i < argc; i++) {
+        result[i - 1] = argv[i] - '0';
     }
     return result;
 }
