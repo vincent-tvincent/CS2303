@@ -1,13 +1,9 @@
-#include "HW3header.h";
+#include "HW3header.h"
 int main(int argc, char* argv[]){
-    //construct the martrix 
-    int maxRow = *argv[1] - '0';
-    int maxCol = *argv[2] - '0';
-    int maxCapacity = maxRow * maxCol;
-    int* martrix = malloc(maxCapacity * sizeof(int));
-    
-    //filling matrix base on the rule 
-    
+    board Board1 = boardInit(5,5);
+    block** pointer1 = Board1.start;
+    block* drfPointer1 = *pointer1; 
+    printf("%s",drfPointer1->value);
     
     return 0;
 }

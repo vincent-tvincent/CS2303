@@ -1,11 +1,14 @@
-#include "HW3header.h";
+#include "HW3header.h"
 // just for convert argv
 int* toInt(int argc, char* argv){
     int* intArray = malloc(argc * sizeof(int));
     int* pointer = intArray;
     for(int i = 1; i < argc;  i++){
-        pointer = argv[i] -  '0';
+        int pointerValue = argv[i] -  '0';
+        pointer = pointerValue;
+        pointer++; 
     }
+
     return intArray;
 }
 
@@ -34,8 +37,8 @@ board boardInit(int maxRow, int maxCol){
 
 /*
 return value: block**
-this function will consume two int type value as the coodinate of the new pointer and one board type value as the board, 
-then return a pointer of this block pointer. 
+this function will consume two int type value as the coodinate of the new pointer and
+one board type value as the board, then return a pointer of this block pointer. 
 */
 block** pointerInit(board Board,int row, int col){
     block** newPointer = Board.start + row*Board.maxCol + col;
@@ -75,12 +78,13 @@ block** randLocation(board Board){
 return value: no return 
 this function consume two pointers of block pointers, then swap the value of this two pointers
 */
-void swap(board Board, block** pointer1, block** pointer2){
+void swap(block** pointer1, block** pointer2){
     block* block1 = *pointer1;
     block* block2 = *pointer2;
-    int temp = block1->value;
-    block1->value = &(block2->value);
-    block2->value = &temp;
+    block* temp = block1;
+    *block1 = *block2;
+    *block2 = *temp; 
+    
 }
 
 

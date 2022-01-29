@@ -1,4 +1,1 @@
-#include "HW3header.h";
-void loading(int* matrix){
-    
-}
+#include "HW3header.h"

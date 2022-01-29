@@ -2,12 +2,10 @@
     team members: 
     Yuancen Pu 
 */
-#ifndef HW3;
-#define HW3;
-#include <stdio.h>;
-#include <stdlib.h>;
-int value = 1;
-
+#ifndef HW3
+#define HW3
+#include <stdio.h>
+#include <stdlib.h>
 typedef struct{
     int row;
     int col;
