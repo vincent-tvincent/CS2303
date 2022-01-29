@@ -7,24 +7,6 @@
 
 #include "tests.h"
 
-
-
-
-bool tests()
-{
-	bool allOK = true; //so far, so good
-
-	//test the functions that get used
-	//order the tests from simplest first -- this produces building blocks for use in more complex tests
-	//check how functions are used in production code, this gives clues about how to provide the arguments for the invocation
-	bool ok0 = testLoad();
-	bool ok1 = testIsValid();
-	bool ok2 = testIsEligible();
-	bool ok3 = testSettle();
-	allOK = ok0 && ok1 && ok2 && ok3;
-	return allOK;
-}
-
 bool testLoad()
 {
 	bool ok = true; //so far
