@@ -9,6 +9,7 @@
 #define BOARD_H_
 #include <stdbool.h>
 #include <stdlib.h>
+#include "tests.h"
 typedef struct{
     int row;
     int col;

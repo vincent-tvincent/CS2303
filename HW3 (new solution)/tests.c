@@ -7,18 +7,31 @@
 
 #include "tests.h"
 
+void printBoard(int* board, int nrows, int ncols)
+{   
+    int* pointer = board;
+    for(int i = 0; i < nrows; i++){
+        for(int j = 0; j < ncols; j++){
+            printf("%d ",*pointer);
+            if(*pointer < 10){printf(" ");}
+            pointer++;
+        }
+        printf("\n");
+    }
+}
+
 bool testLoad()
 {
 	bool ok = true; //so far
-	puts("Starting test load"); fflush(stdout);
+	puts("\nStarting test load"); fflush(stdout);
 	//setup
-	int* board = (int*) malloc (11*12*sizeof(int));
+	int* board = (int*) malloc (10*10*sizeof(int));
 	int testRow = 6;
-	int testCol =4;
-
+	int testCol =8;
+	
 	//trial
-	load(board, 11,12);
-	int* whichIsIt = board+ testRow + testCol;
+	load(board, 10,10);
+	int* whichIsIt = board+ testRow*10 + testCol;
 	int answer = *whichIsIt;
 	int rightAnswer = 3*testRow + 5*testCol;
 	ok = (answer == rightAnswer);
@@ -47,7 +60,7 @@ bool testRandChoose()
 	pair* answer = randChoose(10,10);
 	
 	//judgement 
-	ok = answer -> row < 10 && answer -> row > 10 && answer -> col < 10 && answer -> col < 10;
+	ok = answer -> row < 10 && answer -> row > -1 && answer -> col < 10 && answer -> col > -1;
 	if(ok){
 		puts("randChoose passed its test");
 	}else{
@@ -60,11 +73,27 @@ bool testRandChoose()
 bool testSwapHelper(int row, int col)
 {
 	bool ok = true;
-	printf("start testing swap with value row = %d and col = %d",row,col);
+	printf("start testing swap with value row = %d and col = %d \n",row,col);
 	//setup 
 	int* board = (int*) malloc(10*10*sizeof(int));
+	int* p = board;
+	int newRow = -1;
+	int newCol = -1;
+
+	if(col == 0){
+		newCol = 10 - 1;
+	}else{
+		newCol = col - 1;
+	}
+
+	if(row + 1 < 10){
+		newRow = row + 1;
+	}else{
+		newRow = 0;
+	}
+
 	int* pointer1 = board + row*10 + col;
-	int* pointer2 = board + (row + 1)*10 + col - 1;
+	int* pointer2 = board + newRow*10 + newCol;
 	*pointer1 = 1;
 	*pointer2 = 2;
 	
@@ -74,9 +103,9 @@ bool testSwapHelper(int row, int col)
 	//judgement 
 	ok = *pointer1 == 2 && *pointer2 == 1; 
 	if(ok){
-		puts("swap passed the test");
+		puts(" swap passed the test");
 	}else{
-		puts("swap did not pass the test");
+		puts(" swap did not pass the test");
 	}
 
 	return ok;
@@ -86,9 +115,9 @@ bool testSwapHelper(int row, int col)
 bool testSwap(){
 	puts("start testing swap");
 	bool ok1 = testSwapHelper(2,3);
-	bool ok2 = testSwapHelper(10,2);
-	bool ok3 = testSwapHelper(2,1);
-	bool ok4 = testSwapHelper(10,1);
+	bool ok2 = testSwapHelper(9,2);
+	bool ok3 = testSwapHelper(2,0);
+	bool ok4 = testSwapHelper(9,0);
 	return ok1 && ok2 && ok3 && ok4;
 }
 
@@ -104,7 +133,7 @@ bool testSelect(){
 	return ok;	
 }
 
-void tests(){
+bool tests(){
 	puts("start tests");
 	bool ok = testLoad() && testRandChoose() && testSwap() && testSelect();
 	if(ok){
@@ -112,5 +141,6 @@ void tests(){
 	}else{
 		puts("test did not pass"); 
 	}
+	return ok;
 };
 

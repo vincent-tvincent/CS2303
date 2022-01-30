@@ -20,27 +20,38 @@ void load(int* theBoard, int nrows, int ncols)
 }
 
 pair* randChoose(int nRow, int nCol){
-	int randRow = rand()%nRow;
-	int randCol = rand()%nCol;
+	int randRow = rand()%(nRow - 1);
+	int randCol = rand()%(nCol - 1);
 	pair* randPointer = (pair*) malloc(sizeof(pair));
 	randPointer -> row = randRow;
 	randPointer -> col = randCol;
 	return randPointer;
 }
 
+
 void swap(int* theBoard, int nrows, int ncols,int row,int col){
 	int* startingPlace = theBoard + row*ncols + col;
 	int newCol = -1;
-	if(col - 1 == 0){
+	int newRow = -1;
+	//printBoard(theBoard,nrows,ncols);
+	if(col == 0){
 		newCol = ncols - 1;
 	}else{
 		newCol = col - 1;
 	}
 
-	int* endingPlace = theBoard +((row+1)%nrows)*ncols + newCol;  
+	if(row + 1 < nrows){
+		newRow = row + 1;
+	}else{
+		newRow = 0;
+	}
+
+	printf("newRow: %d,newCol: %d \n", newRow, newCol);
+	int* endingPlace = theBoard + newRow*ncols + newCol;  
 	int temp = *endingPlace;
 	*endingPlace = *startingPlace;
 	*startingPlace = temp;
+	//printBoard(theBoard,nrows,ncols);
 }
 
 int select(int* theBoard, int nRow, int nCol){

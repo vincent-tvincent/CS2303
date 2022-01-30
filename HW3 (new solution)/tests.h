@@ -12,10 +12,12 @@
 #include <stdlib.h>
 #include "Board.h"
 
-void tests();
+bool tests();
 
 bool testLoad();
 bool testRandChoose();
 bool testSwap();
 bool testSelect();
+
+void printBoard();
 #endif /* TESTS_H_ */
