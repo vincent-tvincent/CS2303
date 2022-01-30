@@ -45,8 +45,6 @@ void swap(int* theBoard, int nrows, int ncols,int row,int col){
 	}else{
 		newRow = 0;
 	}
-
-	printf("newRow: %d,newCol: %d \n", newRow, newCol);
 	int* endingPlace = theBoard + newRow*ncols + newCol;  
 	int temp = *endingPlace;
 	*endingPlace = *startingPlace;

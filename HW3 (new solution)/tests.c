@@ -73,7 +73,7 @@ bool testRandChoose()
 bool testSwapHelper(int row, int col)
 {
 	bool ok = true;
-	printf("start testing swap with value row = %d and col = %d \n",row,col);
+	printf("	start testing swap with value row = %d and col = %d, ",row,col);
 	//setup 
 	int* board = (int*) malloc(10*10*sizeof(int));
 	int* p = board;
@@ -123,13 +123,24 @@ bool testSwap(){
 
 bool testSelect(){
 	bool ok = true;
+	puts("start testing select");
 	//setup 
 	int* board = (int*) malloc(10*10*sizeof(int));
 	int* pointer = board;
+	for(int i = 0; i < 100; i++){
+		*pointer = 0;
+		pointer++;
+	}
 	//trial
+	int selectResult = select(board,10,10);	
 	
 	//judgement
-	
+	ok = !selectResult;
+	if(ok){
+		puts("select passed the test");
+	}else{
+		puts("select did not pass the test");
+	}
 	return ok;	
 }
 

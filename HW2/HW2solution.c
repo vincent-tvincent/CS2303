@@ -4,6 +4,7 @@ int polynomial(int c, char* v[])
     int* parameters =(int*) malloc(c * sizeof(int));
     for (int i = 1; i < c; i++) {
         parameters[i - 1] = *(v[i]) - '0';
+        printf("%d\n", parameters[i-1]);
     }
     int answer = 0;
 
@@ -11,6 +12,6 @@ int polynomial(int c, char* v[])
     {
         answer += parameters[i] * pow(parameters[0],i);
     }
-    return answer;
+    return answer; 
 }
 
