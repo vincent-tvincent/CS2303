@@ -1,9 +1,3 @@
-/*
- * tests.c
- *
- *  Created on: Jul 4, 2019
- *      Author: Therese
- */
 
 #include "tests.h"
 

@@ -1,5 +1,6 @@
 /*
 	group member: 
+	Yuancen Pu
  */
 
 #include "Board.h"
