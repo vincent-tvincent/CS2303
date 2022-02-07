@@ -21,9 +21,11 @@
   <ItemGroup>
     <ClInclude Include="graph.h" />
     <ClInclude Include="hw5Header.h" />
+    <ClInclude Include="linkedList.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="graph.cpp" />
+    <ClCompile Include="linkedList.cpp" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

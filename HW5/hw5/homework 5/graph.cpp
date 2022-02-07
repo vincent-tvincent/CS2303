@@ -1,11 +1,10 @@
 #include "hw5Header.h"
-class graph {
+class graphNode{
 	
 public:
-	graph() {
-	
+	graphNode() {
 	}
 private:
-
+	graphNode** nodes;
 };
 
