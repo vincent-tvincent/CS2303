@@ -13,8 +13,7 @@
 typedef struct{
     int row;
     int col;
-
-}pair;
+} pair;
 
 void load(int* theBoard, int nrows, int ncols);
 pair* randChoose(int row, int col);

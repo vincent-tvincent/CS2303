@@ -44,24 +44,22 @@ void AdjMat::setEdgesP(int* eP)
 
 void AdjMat::init()
 {
-
 	for(int row = 0; row<n; row++)
 	{
-		for(int col = 0; col<n; col++)3
+		for(int col = 0; col<n; col++)
 		{
 			*(edgesP+(row*n)+col)= 0;
 		}
 	}
-
 }
 
-void AdjMat::setEdge(int row, int col)
+void AdjMat::setEdge(int row, int col)//only sets to one, assumes symmetric matrix
 {
 
 	int ncols = n;
 	int* arrayBeginning = edgesP;
 	//printf("about to set edges with n = %d", n);fflush(stdout);
-	*(arrayBeginning + (ncols*row) +col) = 1;
+	*(arrayBeginning + (ncols*row) + col) = 1;
 	//puts("Set first edge"); fflush(stdout);
 	*(arrayBeginning + (ncols*col) + row) = 1;
 	//puts("Set second edge"); fflush(stdout);

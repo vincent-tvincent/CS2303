@@ -1,0 +1,3 @@
+﻿  graph.cpp
+D:\OneDrive\WPI\CS2303\github(visual studio desktop)\CS2303\HW5\hw5\homework 5\graph.cpp(2,16): error C2011: “graphNode”:“class”类型重定义
+D:\OneDrive\WPI\CS2303\github(visual studio desktop)\CS2303\HW5\hw5\homework 5\graph.h(4): message : 参见“graphNode”的声明

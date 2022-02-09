@@ -15,22 +15,28 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="hw5Header.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="graph.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
-    <ClInclude Include="fileReader.h">
-      <Filter>头文件</Filter>
-    </ClInclude>
+    <ClCompile Include="hw5main.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="readMatrix.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
+    <ClCompile Include="matrix.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="graph.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
-    <ClCompile Include="fileReader.cpp">
-      <Filter>源文件</Filter>
-    </ClCompile>
+    <ClInclude Include="hw5main.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="readMatrix.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="matrix.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="io.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
