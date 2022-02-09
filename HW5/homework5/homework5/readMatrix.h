@@ -14,7 +14,7 @@ private:
 	char** cmdArguments;
 	matrix* Matrix;
 	int* fixMatrix();
-	bool checkInput(int, char**);
+	bool checkInput(char**);
 	void fillMatrix(char*);
 };
 #endif 

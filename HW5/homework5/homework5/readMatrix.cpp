@@ -8,9 +8,9 @@ readMatrix::readMatrix(char** argv) {
 	}
 }
 
-bool readMatrix::checkInput(int argc, char** argv) {
+bool readMatrix::checkInput(char** argv) {
 	bool vaild = true;
-	for (int i = 1; i < argc; i++) //don't want to read argv[0]
+	for (int i = 1; i < 2; i++) //don't want to read argv[0]
 	{//argv[i] is a string
 		//in this program our arguments are NR, NC, gens, filename, print and pause
 		//because pause is optional, argc could be 6 or 7
@@ -36,18 +36,10 @@ bool readMatrix::checkInput(int argc, char** argv) {
 			}
 			break;
 		case 2:
-			//this is maximum number of vaild
+			//this is maximum number of elements
 
-			aL = strtol(argv[i], &eptr, 10);
-			maxRooms = (int)aL;
-			printf("Limit of rooms is %d\n", maxRooms); fflush(stdout);
-			break;
-		case 3:
-			//this is maximum amount of treasure
-
-			maxTreas = atof(argv[i]);
-			printf("Limit of  treasure is %f\n", maxTreas); fflush(stdout);
-			maxTreasure = (float)maxTreas;
+			char* ptr;
+			printf("Limit of rooms is %d\n", strtol(argv[2],&ptr,10)); fflush(stdout);
 			break;
 
 		default:
