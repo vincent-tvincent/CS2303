@@ -13,7 +13,7 @@ public:
 private:
 	char** cmdArguments;
 	matrix* Matrix;
-	int* fixMatrix();
+	void fixMatrix(int);
 	bool checkInput(char**);
 	void fillMatrix(char*);
 };

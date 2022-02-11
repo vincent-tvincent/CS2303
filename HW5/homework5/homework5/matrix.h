@@ -10,10 +10,11 @@ public:
 	virtual ~matrix();
 	void set(int, int, int);
 	void printBoard();
+	int* getPointer(int, int);
 private:
 	int* board;
 	int rowLength;
-	int* getPointer(int, int);
+	int colLength;
 };
 #endif
 
