@@ -47,7 +47,7 @@ void AdjMat::init()
 
 	for(int row = 0; row<n; row++)
 	{
-		for(int col = 0; col<n; col++)3
+		for(int col = 0; col<n; col++)
 		{
 			*(edgesP+(row*n)+col)= 0;
 		}

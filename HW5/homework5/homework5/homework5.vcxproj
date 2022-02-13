@@ -115,7 +115,7 @@
       <WarningLevel>Level3</WarningLevel>
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
-      <ConformanceMode>true</ConformanceMode>
+      <ConformanceMode>false</ConformanceMode>
     </ClCompile>
     <Link>
       <SubSystem>Console</SubSystem>
@@ -143,11 +143,17 @@
     <ClInclude Include="matrix.h" />
     <ClInclude Include="readMatrix.h" />
     <ClInclude Include="io.h" />
+    <ClInclude Include="teammate.h" />
+    <ClInclude Include="testMatrix.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="hw5main.cpp" />
     <ClCompile Include="matrix.cpp" />
     <ClCompile Include="readMatrix.cpp" />
+    <ClCompile Include="testMatrix.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="test.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

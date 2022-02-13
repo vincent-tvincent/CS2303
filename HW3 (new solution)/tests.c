@@ -29,7 +29,7 @@ bool testLoad()
 	int answer = *whichIsIt;
 	int rightAnswer = 3*testRow + 5*testCol;
 	ok = (answer == rightAnswer);
-	
+
 
 	//judgment
 	if(ok)

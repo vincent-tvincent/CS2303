@@ -35,7 +35,7 @@ bool readMatrix::checkInput(char** argv) {
 			//this is maximum number of elements
 
 			char* ptr;
-			printf("Limit of rooms is %d\n", strtol(argv[2],&ptr,10)); fflush(stdout);
+			printf("Limit of elements is %d\n", strtol(argv[2],&ptr,10)); fflush(stdout);
 			break;
 
 		default:
@@ -52,11 +52,12 @@ void readMatrix::fillMatrix(char* fileName) {
 	//set the end of the loop
 	int endLength = -1;
 	fscanf(target,"%d",endLength);
-	//loop elements
+	//initialize loop elements
 	int maxRead = 0;
 	int counter = 0;
+	int readValue = -1;
 	while (counter < maxRead && maxRead < endLength) {
-		int readValue = -1;
+		
 		fscanf(target,"%d",readValue);
 		Matrix->set(counter,maxRead,readValue);
 		if (counter < maxRead) {//judge if go to next column
@@ -66,8 +67,10 @@ void readMatrix::fillMatrix(char* fileName) {
 			counter = 0;
 			maxRead++;
 		}
-	}
-	fixMatrix(endLength);
+	} 
+	fclose(target);
+	fflush(target);
+	fixMatrix(endLength); 
 }
 
 void readMatrix::fixMatrix(int endLength) {
@@ -90,4 +93,8 @@ void readMatrix::fixMatrix(int endLength) {
 			col++;
 		}
 	}
+}
+
+void readMatrix::printMatrix() {
+	Matrix->printBoard();
 }

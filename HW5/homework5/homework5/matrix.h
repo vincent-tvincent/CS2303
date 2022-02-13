@@ -9,13 +9,13 @@ public:
 	matrix(int,int);
 	virtual ~matrix();
 	void set(int, int, int);
-	void printBoard();
+	void printBoard(char*);
 	int* getPointer(int, int);
+	int* getBoard();
 private:
 	int* board;
 	int rowLength;
 	int colLength;
 };
 #endif
-
 

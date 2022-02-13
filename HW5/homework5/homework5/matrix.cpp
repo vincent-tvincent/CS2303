@@ -17,11 +17,21 @@ int* matrix::getPointer(int row, int col) {
 	return target;
 }
 
-void matrix::printBoard() {
+void matrix::printBoard(char* fileName) {
 	int endPoint = rowLength * colLength;
+	FILE* output = fopen(fileName,"w");
 	for (int i = 0; i < endPoint; i++) {
 		printf("%d ",*board);
-		if (i / (colLength - 1) == 0) { puts("\n");}
+		int outNum = fprintf(output,"|%d", *board);
+		printf("%d element writen to the outout: %d", outNum, *board);
+		if (i / (colLength - 1) == 0) { 
+			puts("\n");
+			fprintf(output,"\n");
+		}
 		board++;
 	}
+} 
+
+int* matrix::getBoard() {
+	return board;
 }
