@@ -1,9 +1,10 @@
 #include "readMatrix.h"
-
+#pragma warning(disable: 4996)
 readMatrix::readMatrix(char** argv) {
 	if (checkInput(argv)) {
 		Matrix = new matrix((int)(argv[2]) - 48,(int)(argv[2]) - 48);
 		fillMatrix(argv[1]);
+		outputName = argv[2];
 	}
 }
 
@@ -96,5 +97,5 @@ void readMatrix::fixMatrix(int endLength) {
 }
 
 void readMatrix::printMatrix() {
-	Matrix->printBoard();
+	Matrix->printBoard(outputName);
 }

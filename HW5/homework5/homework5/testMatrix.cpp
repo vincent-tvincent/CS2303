@@ -1,4 +1,5 @@
 #include "testMatrix.h"
+#pragma warning(disable: 4996)
 testMatrix::testMatrix() {
 	testOutputName = "testOutput.txt";
 	testObject = new matrix(5,5);
@@ -18,6 +19,26 @@ bool testMatrix::test() {
 	return ok; 
 }
 
+bool testMatrix::testGetPointer() {
+	cout << "start testing getPointer()" << endl;
+	bool ok = false;
+	int row = rand() % 5;
+	printf("	test row is: %d\n", row);
+	int col = rand() % 5;
+	printf("	test col is: %d\n", col);
+	int expect = row + col * 5;
+	testObject->initForTest();
+	
+	ok = *testObject->getPointer(row, col) == expect;
+	if (ok) {
+		cout << "getPointer() pass the test" << endl;
+	}
+	else {
+		cout << "getPointer() doesn't pass the test" << endl;
+	}
+	return ok;
+}
+
 bool testMatrix::testSet() {
 	cout << "start test set()" << endl;	
 	bool ok = false;
@@ -26,7 +47,7 @@ bool testMatrix::testSet() {
 			testObject->set(row,col,1);
 		}
 	}
-
+	testObject->onlyPrintBoard();
 	int* thisBoard = testObject->getBoard();
 	ok = scanBoard(thisBoard,1);
 
@@ -50,27 +71,27 @@ bool testMatrix::scanBoard(int* board,int testValue) {
 	return ok;
 }
 
-bool testMatrix::testGetPointer() {
-	cout << "start testing getPointer()" << endl;
+bool testMatrix:: testPrintBoard() {
+	cout << "start testing printBoard()" << endl;
 	bool ok = false;
-	int row = rand() % 5;
-	printf("	test row is: %d",row);
-	int col = rand() % 5;
-	printf("	test col is: %d",col);
-	
-	testObject->set(row,col,0);
-	ok = *testObject->getPointer(row,col) == 0;
+	testObject->printBoard(testOutputName);
+	int* reference = testObject->getBoard();
+	FILE* readBackFile = fopen(testOutputName,"r");
+	int readBack = -1;
+	for (int i = 0; i < 25;  i++) {
+		fscanf(readBackFile,"%d",readBack);
+		ok = readBack == *(reference + i);
+		if (!ok) break;
+	}
+
 	if (ok) {
-		cout << "getPointer() pass the test" << endl;
+		cout << "printBoard() pass the test" << endl;
 	}
 	else {
-		cout << "getPointer() doesn't pass the test" << endl;
+		cout << "printBoard() doesn't pass the test" << endl;
 	}
-	return ok;
-}
 
-bool testPrintBoard() {
-	
+	return ok;
 }
 
 

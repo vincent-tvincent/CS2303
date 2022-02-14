@@ -8,10 +8,12 @@ class matrix
 public:
 	matrix(int,int);
 	virtual ~matrix();
+	void initForTest();
 	void set(int, int, int);
 	void printBoard(char*);
 	int* getPointer(int, int);
 	int* getBoard();
+	void onlyPrintBoard();
 private:
 	int* board;
 	int rowLength;

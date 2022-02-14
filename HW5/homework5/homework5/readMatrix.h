@@ -11,6 +11,7 @@ public:
 	readMatrix(char**);
 	void printMatrix();
 private:
+	char* outputName;
 	char** cmdArguments;
 	matrix* Matrix;
 	void fixMatrix(int);
