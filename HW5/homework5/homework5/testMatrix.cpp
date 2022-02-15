@@ -1,8 +1,10 @@
 #include "testMatrix.h"
 #pragma warning(disable: 4996)
-testMatrix::testMatrix() {
+testMatrix::testMatrix(int row, int col) {
 	testOutputName = "testOutput.txt";
-	testObject = new matrix(5,5);
+	testRow = row;
+	testCol = col;
+	testLength = testRow * testCol;
 }
 testMatrix::~testMatrix() {
 }
@@ -21,15 +23,17 @@ bool testMatrix::test() {
 
 bool testMatrix::testGetPointer() {
 	cout << "start testing getPointer()" << endl;
+	matrix* testObject = new matrix(testRow, testCol);
 	bool ok = false;
-	int row = rand() % 5;
+	int row = rand() % testRow;
 	printf("	test row is: %d\n", row);
-	int col = rand() % 5;
+	int col = rand() % testCol;
 	printf("	test col is: %d\n", col);
-	int expect = row + col * 5;
+	int expect = row + col * testRow;
 	testObject->initForTest();
-	
-	ok = *testObject->getPointer(row, col) == expect;
+	testObject->onlyPrintBoard();
+	ok = *(testObject->getPointer(row, col)) == expect;
+	printf("value: %d expect£º%d \n", *(testObject->getPointer(row,col)),expect);
 	if (ok) {
 		cout << "getPointer() pass the test" << endl;
 	}
@@ -41,9 +45,10 @@ bool testMatrix::testGetPointer() {
 
 bool testMatrix::testSet() {
 	cout << "start test set()" << endl;	
+	matrix* testObject = new matrix(testRow, testCol);
 	bool ok = false;
-	for (int col = 0; col < 5; col++) {
-		for (int row = 0; row < 5; row++) {
+	for (int col = 0; col < testCol; col++) {
+		for (int row = 0; row < testRow; row++) {
 			testObject->set(row,col,1);
 		}
 	}
@@ -62,10 +67,11 @@ bool testMatrix::testSet() {
 
 bool testMatrix::scanBoard(int* board,int testValue) {
 	bool ok = true;
-	for (int i = 0; i < 25; i++) {
+	bool done = false;
+	for (int i = 0; i < testLength && !done; i++) {
 		if (*board != testValue) {
 			ok = !ok;
-			break;
+			done = true;
 		}
 	}
 	return ok;
@@ -73,17 +79,21 @@ bool testMatrix::scanBoard(int* board,int testValue) {
 
 bool testMatrix:: testPrintBoard() {
 	cout << "start testing printBoard()" << endl;
+	matrix* testObject = new matrix(testRow, testCol);
+	testObject->initForTest();
 	bool ok = false;
 	testObject->printBoard(testOutputName);
 	int* reference = testObject->getBoard();
 	FILE* readBackFile = fopen(testOutputName,"r");
 	int readBack = -1;
-	for (int i = 0; i < 25;  i++) {
-		fscanf(readBackFile,"%d",readBack);
+	bool done = false;
+	for (int i = 0; i < testLength && !done;  i++) {
+		fscanf(readBackFile,"%d",&readBack);
+		printf("read back value: %d \n", readBack);
 		ok = readBack == *(reference + i);
-		if (!ok) break;
+		if (!ok) { done = true; }
 	}
-
+	fclose(readBackFile);
 	if (ok) {
 		cout << "printBoard() pass the test" << endl;
 	}
@@ -93,7 +103,4 @@ bool testMatrix:: testPrintBoard() {
 
 	return ok;
 }
-
-
-
 

@@ -2,13 +2,14 @@
 #pragma warning(disable: 4996)
 matrix::matrix(int row, int col) {
 	board = (int*) malloc(row*col*sizeof(int));
-	int rowLength = row;
-	int colLength = col;
+	rowLength = row;
+	colLength = col;
 }
 
 matrix::~matrix() {}
 
 void matrix::initForTest() {
+	printf("row: %d col: %d \n", rowLength, colLength);
 	for (int i = 0; i < rowLength * colLength; i++) {
 		*(board + i) = i;
 	}
@@ -17,9 +18,8 @@ void matrix::initForTest() {
 }
 
 void matrix::set(int row, int col,int value) {
-	printf("set value (%d,%d) to %d \n", row,col,value);
 	int* target = getPointer(row,col);
-	target = &value;
+	*target = value;
 }
 
 int* matrix::getPointer(int row, int col) {
@@ -29,27 +29,30 @@ int* matrix::getPointer(int row, int col) {
 
 void matrix::printBoard(char* fileName) {
 	int endPoint = rowLength * colLength;
+	int* tracker = board;
 	FILE* output = fopen(fileName,"w");
 	for (int i = 0; i < endPoint; i++) {
-		printf("%d ",*board);
-		int outNum = fprintf(output,"%d ", *board);
-		if (i / (colLength - 1) == 0) { 
+		printf("%d ", *tracker);
+		fprintf(output,"%d ", *tracker);
+		if ((i+1) % colLength == 0) { 
 			puts("\n"); 
 			fprintf(output,"\n");
 		}
-		board++;
+		tracker++;
 	}
+	fclose(output);
 } 
 
 void matrix::onlyPrintBoard() {
 	cout << "start Print" << endl;
+	int* tracker = board;
 	int endPoint = rowLength * colLength;
-	for (int i = 0; i < endPoint; i++) {
-		printf("%d ", *board);
-		if (i / (colLength - 1) == 0) {
-			puts("\n");
+	for (int i = 0; i < endPoint; i++) {   
+		printf("%d ", *tracker);
+		if ((i+1) % colLength == 0) {
+		puts("\n");
 		}
-		board++;
+		tracker++;
 	}
 }
 

@@ -3,12 +3,14 @@
 #include"matrix.h"
 class testMatrix {
 public:
-	testMatrix();
+	testMatrix(int,int);
 	virtual ~testMatrix();
 	bool test();
 private:
 	char* testOutputName;
-	matrix* testObject;
+	int testRow;
+	int testCol;
+	int testLength;
 	bool scanBoard(int*,int);
 	bool testGetPointer();
 	bool testSet();

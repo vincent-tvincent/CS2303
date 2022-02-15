@@ -61,7 +61,7 @@ void AdjMat::setEdge(int row, int col)//only sets to one, assumes symmetric matr
 	//printf("about to set edges with n = %d", n);fflush(stdout);
 	*(arrayBeginning + (ncols*row) + col) = 1;
 	//puts("Set first edge"); fflush(stdout);
-	*(arrayBeginning + (ncols*col) + row) = 1;
+	*(arrayBeginning + (ncols*col) + row) = 1; 	
 	//puts("Set second edge"); fflush(stdout);
 }
 int AdjMat::getEdge(int row, int col)

@@ -15,6 +15,7 @@ public:
 	int* getBoard();
 	void onlyPrintBoard();
 private:
+	char* addSpace(int);
 	int* board;
 	int rowLength;
 	int colLength;
