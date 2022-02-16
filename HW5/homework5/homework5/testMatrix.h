@@ -6,6 +6,7 @@ public:
 	testMatrix(int,int);
 	virtual ~testMatrix();
 	bool test();
+	bool testPrintBoard();
 private:
 	char* testOutputName;
 	int testRow;
@@ -14,6 +15,5 @@ private:
 	bool scanBoard(int*,int);
 	bool testGetPointer();
 	bool testSet();
-	bool testPrintBoard();
 };
 #endif

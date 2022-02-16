@@ -1,57 +1,18 @@
 #include "readMatrix.h"
 #pragma warning(disable: 4996)
 readMatrix::readMatrix(char** argv) {
-	if (checkInput(argv)) {
-		Matrix = new matrix((int)(argv[2]) - 48,(int)(argv[2]) - 48);
-		fillMatrix(argv[1]);
-		outputName = argv[2];
-	}
+	inputName = argv[1];
+	outputName = argv[2];
+	endLength = -1;
+	fillMatrix(outputName);
 }
 
-bool readMatrix::checkInput(char** argv) {
-	bool vaild = true;
-	for (int i = 1; i < 2; i++) 
-	{
-		switch (i)
-		{
-		case 1:
-			//this is filename
-			printf("The length of the filename is %d.\n", (int)strlen(argv[i]));
-			printf("The proposed filename is %s.\n", argv[i]);
-			if (strlen(argv[i]) >= FILENAMELENGTHALLOWANCE)
-			{
-				puts("Filename is too long.");
-				fflush(stdout);
-				vaild = false;
-			}
-			else
-			{
-				char* filename = argv[1];
-				strcpy(filename, argv[i]);
-				printf("Filename was %s.\n", filename);
-				fflush(stdout);
-			}
-			break;
-		case 2:
-			//this is maximum number of elements
-
-			char* ptr;
-			printf("Limit of elements is %d\n", strtol(argv[2],&ptr,10)); fflush(stdout);
-			break;
-
-		default:
-			puts("Unexpected argument count."); fflush(stdout);
-			vaild = false;
-			break;
-		}//end of switch
-	}//end of for loop on argument count
-	return vaild;
+readMatrix::readMatrix() {
 }
 
 void readMatrix::fillMatrix(char* fileName) {
 	FILE* target = fopen(fileName,"r");
 	//set the end of the loop
-	int endLength = -1;
 	fscanf(target,"%d",endLength);
 	//initialize loop elements
 	int maxRead = 0;
@@ -71,10 +32,10 @@ void readMatrix::fillMatrix(char* fileName) {
 	} 
 	fclose(target);
 	fflush(target);
-	fixMatrix(endLength); 
+	fixMatrix(); 
 }
 
-void readMatrix::fixMatrix(int endLength) {
+void readMatrix::fixMatrix() {
 	//initialize the loop 
 	int rowStart = 1;
 	int row = rowStart;
@@ -97,5 +58,6 @@ void readMatrix::fixMatrix(int endLength) {
 }
 
 void readMatrix::printMatrix() {
+
 	Matrix->printBoard(outputName);
 }

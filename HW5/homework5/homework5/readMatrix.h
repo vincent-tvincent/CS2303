@@ -4,19 +4,20 @@
 #include <cstdio>
 #include <string.h>
 #include "matrix.h"
-#define FILENAMELENGTHALLOWANCE (100)
 class readMatrix
 {
 public:
 	readMatrix(char**);
+	readMatrix();
+	virtual ~readMatrix();
 	void printMatrix();
-private:
-	char* outputName;
-	char** cmdArguments;
-	matrix* Matrix;
-	void fixMatrix(int);
-	bool checkInput(char**);
 	void fillMatrix(char*);
+	void fixMatrix();
+private:
+	char* inputName;
+	char* outputName;
+	int endLength;
+	matrix* Matrix;
 };
 #endif 
 

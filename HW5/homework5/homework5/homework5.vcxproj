@@ -145,12 +145,14 @@
     <ClInclude Include="io.h" />
     <ClInclude Include="teammate.h" />
     <ClInclude Include="testMatrix.h" />
+    <ClInclude Include="testReadMatrix.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="hw5main.cpp" />
     <ClCompile Include="matrix.cpp" />
     <ClCompile Include="readMatrix.cpp" />
     <ClCompile Include="testMatrix.cpp" />
+    <ClCompile Include="testReadMatrix.cpp" />
   </ItemGroup>
   <ItemGroup>
     <Text Include="steps.txt" />
