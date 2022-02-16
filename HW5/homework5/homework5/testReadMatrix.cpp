@@ -3,17 +3,13 @@ testReadMatrix::testReadMatrix() {
 	inputFile = "test.txt";
 	outputFile = "testout.txt";
 	testLength = 5;
-	int testMatrix[5][5] = {{0,1,0,1,0},
-							{1,0,1,0,1},
-							{0,1,0,1,0},
-							{1,0,1,0,1},
-							{0,1,0,1,0}};
 }
 
 bool testReadMatrix:: test() {
 	cout << "start test readMatrix " << endl;
+	cout << "printMatrix() directly call the printBoard() function of matrix class, which is already tested,\nthus printMatrix will not be tested here." << endl;
 	bool ok = false;
-	ok = testFillMatrix() && testFixMatrix() && testPrintMatrix();
+	ok = testFillMatrix() && testFixMatrix();
 	if (ok) {
 		cout << "readMatrix pass the test" << endl;
 	}
@@ -25,6 +21,11 @@ bool testReadMatrix:: test() {
 
 
 bool testReadMatrix:: testFillMatrix() {
+	int testMatrix[5][5] = {{0,1,0,1,0},
+							{1,0,1,0,1},
+							{0,1,0,1,0},
+							{1,0,1,0,1},
+							{0,1,0,1,0} };
 	cout << "start testing fillMatrix()" << endl;
 	bool ok = false;
 	// fillMatrix() and fixMatrix() will be automatically call during constructing.
@@ -33,10 +34,11 @@ bool testReadMatrix:: testFillMatrix() {
 	int row = 0;
 	int col = 0;
 	int maxLength = 0;
-	
 	bool done = false;
 	do{
-		ok = *(result->getPointer(row, col)) == testMatrix[row][&col];
+		cout << "here" << endl;
+		ok = *(result->getPointer(row, col)) == testMatrix[row][col];
+		printf("testMatrix value: %d", testMatrix[row][col]);
 		if (row < maxLength) {
 			row++;
 		}

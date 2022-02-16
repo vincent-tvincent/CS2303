@@ -1,17 +1,7 @@
+#pragma once
 #include "test.h"
-void test() {
-	cout << "start test" << endl; fflush(stdout);
-	if (testMatrix() && testReadMatrix()) {
-		cout << "test passed" << endl; fflush(stdout);
-	}
-	else {
-		cout << "test did not pass" << endl;
-	}
-}
-
-bool testMatrix() {
-	return testMatrixSet() && testMatrixGetPointer();
-}
-
-bool testMatrixSet() {
+bool test() {
+	testMatrix* test1 = new testMatrix();
+	testReadMatrix* test2 = new testReadMatrix();
+	return test1->test() && test2->test();
 }

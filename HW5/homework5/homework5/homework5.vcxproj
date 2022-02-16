@@ -144,6 +144,7 @@
     <ClInclude Include="readMatrix.h" />
     <ClInclude Include="io.h" />
     <ClInclude Include="teammate.h" />
+    <ClInclude Include="test.h" />
     <ClInclude Include="testMatrix.h" />
     <ClInclude Include="testReadMatrix.h" />
   </ItemGroup>
@@ -151,6 +152,7 @@
     <ClCompile Include="hw5main.cpp" />
     <ClCompile Include="matrix.cpp" />
     <ClCompile Include="readMatrix.cpp" />
+    <ClCompile Include="test.cpp" />
     <ClCompile Include="testMatrix.cpp" />
     <ClCompile Include="testReadMatrix.cpp" />
   </ItemGroup>

@@ -11,7 +11,6 @@ private:
 	char* inputFile;
 	char* outputFile;
 	int testLength;
-	int* testMatrix;
 	bool testFillMatrix();
 	bool testFixMatrix();
 	bool testPrintMatrix(); 
