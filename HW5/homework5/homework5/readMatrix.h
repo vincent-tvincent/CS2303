@@ -7,13 +7,13 @@
 class readMatrix
 {
 public:
-	readMatrix(char**);
-	readMatrix();
+	readMatrix(char*,char*	);
 	virtual ~readMatrix();
 	void printMatrix();
+	matrix getMatrix();
+private:
 	void fillMatrix(char*);
 	void fixMatrix();
-private:
 	char* inputName;
 	char* outputName;
 	int endLength;

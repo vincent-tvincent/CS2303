@@ -1,9 +1,9 @@
 #include "testMatrix.h"
 #pragma warning(disable: 4996)
-testMatrix::testMatrix(int row, int col) {
+testMatrix::testMatrix() {
 	testOutputName = "testOutput.txt";
-	testRow = row;
-	testCol = col;
+	testRow = 5;
+	testCol = 5l;
 	testLength = testRow * testCol;
 }
 testMatrix::~testMatrix() {

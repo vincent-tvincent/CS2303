@@ -3,7 +3,7 @@
 #include"matrix.h"
 class testMatrix {
 public:
-	testMatrix(int,int);
+	testMatrix();
 	virtual ~testMatrix();
 	bool test();
 	bool testPrintBoard();

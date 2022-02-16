@@ -5,11 +5,13 @@
 class testReadMatrix
 {
 public: 
-	testReadMatrix(char*,char*);
+	testReadMatrix();
 	bool test();
 private:
 	char* inputFile;
-	char* outputFile; 
+	char* outputFile;
+	int testLength;
+	int* testMatrix;
 	bool testFillMatrix();
 	bool testFixMatrix();
 	bool testPrintMatrix(); 

@@ -1,14 +1,14 @@
 #include "readMatrix.h"
 #pragma warning(disable: 4996)
-readMatrix::readMatrix(char** argv) {
-	inputName = argv[1];
-	outputName = argv[2];
+readMatrix::readMatrix(char* input, char*output) {
+	inputName = input;
+	outputName = output;
 	endLength = -1;
-	fillMatrix(outputName);
+	fillMatrix(inputName);
+	fixMatrix();
 }
 
-readMatrix::readMatrix() {
-}
+readMatrix:: ~readMatrix() {}
 
 void readMatrix::fillMatrix(char* fileName) {
 	FILE* target = fopen(fileName,"r");
@@ -58,6 +58,9 @@ void readMatrix::fixMatrix() {
 }
 
 void readMatrix::printMatrix() {
-
 	Matrix->printBoard(outputName);
+}
+
+matrix readMatrix::getMatrix() {
+	return *Matrix;
 }
