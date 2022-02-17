@@ -9,11 +9,11 @@ class readMatrix
 public:
 	readMatrix(char*,char*	);
 	virtual ~readMatrix();
+	void fillMatrix();
+	void fixMatrix();
 	void printMatrix();
 	matrix getMatrix();
-private:
-	void fillMatrix(char*);
-	void fixMatrix();
+	private:
 	char* inputName;
 	char* outputName;
 	int endLength;

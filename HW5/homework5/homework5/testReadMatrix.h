@@ -10,10 +10,10 @@ public:
 private:
 	char* inputFile;
 	char* outputFile;
+	int* testMatrix;
 	int testLength;
 	bool testFillMatrix();
 	bool testFixMatrix();
-	bool testPrintMatrix(); 
 };
 #endif
 

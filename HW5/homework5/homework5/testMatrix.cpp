@@ -10,7 +10,7 @@ testMatrix::~testMatrix() {
 }
 
 bool testMatrix::test() {
-	cout << "start test Matrix" <<endl;
+	cout << "\nstart test Matrix" <<endl;
 	bool ok = testGetPointer() && testSet() && testPrintBoard();
 	if (ok) {
 		cout << "Matrix pass the test" << endl;
@@ -95,10 +95,10 @@ bool testMatrix:: testPrintBoard() {
 	}
 	fclose(readBackFile);
 	if (ok) {
-		cout << "printBoard() pass the test" << endl;
+		cout << "printBoard() pass the test\n" << endl;
 	}
 	else {
-		cout << "printBoard() doesn't pass the test" << endl;
+		cout << "printBoard() doesn't pass the test\n" << endl;
 	}
 
 	return ok;

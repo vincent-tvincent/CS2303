@@ -1,4 +1,7 @@
 #include "testReadMatrix.h"
+
+/*as the printMatrix() function only simply call the function fillMatrix(), fixMatrix() and PrintBoard(),
+  which will be test seperately, so there will be no test apply to printMatrix()*/
 testReadMatrix::testReadMatrix() {
 	inputFile = "test.txt";
 	outputFile = "testout.txt";
@@ -6,8 +9,7 @@ testReadMatrix::testReadMatrix() {
 }
 
 bool testReadMatrix:: test() {
-	cout << "start test readMatrix " << endl;
-	cout << "printMatrix() directly call the printBoard() function of matrix class, which is already tested,\nthus printMatrix will not be tested here." << endl;
+	cout << "\nstart test readMatrix " << endl;
 	bool ok = false;
 	ok = testFillMatrix() && testFixMatrix();
 	if (ok) {
@@ -21,33 +23,34 @@ bool testReadMatrix:: test() {
 
 
 bool testReadMatrix:: testFillMatrix() {
-	int testMatrix[5][5] = {{0,1,0,1,0},
-							{1,0,1,0,1},
-							{0,1,0,1,0},
-							{1,0,1,0,1},
-							{0,1,0,1,0} };
+	int testMatrix[5][5] = {2,2,2,2,2,
+							1,2,2,2,2,
+							0,1,2,2,2,
+							1,0,1,2,2,
+							0,1,0,1,2 };
 	cout << "start testing fillMatrix()" << endl;
 	bool ok = false;
-	// fillMatrix() and fixMatrix() will be automatically call during constructing.
-	readMatrix* testObject = new readMatrix(inputFile,outputFile); 
+	readMatrix* testObject = new readMatrix(inputFile,outputFile);
+	testObject->fillMatrix();
 	matrix* result = &(testObject->getMatrix());
+	result->onlyPrintBoard();
 	int row = 0;
 	int col = 0;
-	int maxLength = 0;
-	bool done = false;
-	do{
-		cout << "here" << endl;
-		ok = *(result->getPointer(row, col)) == testMatrix[row][col];
-		printf("testMatrix value: %d", testMatrix[row][col]);
-		if (row < maxLength) {
+	bool complete = true;
+	while (col < testLength && complete){
+		if (row < col) {
+			int actualValue = *(result->getPointer(row, col));
+			complete = actualValue == testMatrix[col][row];
+			ok = complete;
+			printf("at (%d,%d), ",row,col);
+			printf("expected value: %d \n actural value: %d\n\n", testMatrix[col][row],actualValue);
 			row++;
 		}
 		else {
 			row = 0;
 			col++;
-			maxLength++;
 		}
-	} while (row < maxLength && maxLength < testLength && ok);
+	} 
 	
 	if (ok) {
 		cout << "fillMatrix() pass the test" << endl;
@@ -62,34 +65,32 @@ bool testReadMatrix::testFixMatrix() {
 	cout << "start testing fixMatrix()" << endl;
 	bool ok = false;
 	// fillMatrix() and fixMatrix() will be automatically call during constructing.
-	readMatrix* testObject = new readMatrix(inputFile,outputFile); 
+	readMatrix* testObject = new readMatrix(inputFile,outputFile);
+	testObject->fillMatrix();
+	testObject->fixMatrix();
 	matrix* result = &(testObject->getMatrix());
-	int row = 0;
+	result->onlyPrintBoard();
+	int row = 0; 
 	int col = 0;
-	int maxLength = 0;
-
-	bool done = false;
-	do {
-		ok = result->getPointer(row, col) == result->getPointer(col, row);
-		if (row < maxLength) {
+	bool complete = true;
+	while (col < testLength && complete) {
+		if (row <= col) {
+			complete = *(result->getPointer(row,col)) == *(result->getPointer(col,row));
+			ok = complete;
 			row++;
 		}
 		else {
 			row = 0;
 			col++;
-			maxLength++;
 		}
-	} while (row < maxLength && maxLength < testLength && ok);
-
-	for (int i = 0; i < testLength && ok; i++) {
-		ok = result->getPointer(i, i) == 0;
 	}
+	
 
 	if (ok) {
-		cout << "fixMatrix() pass the test" << endl;
+		cout << "fixMatrix() pass the test\n" << endl;
 	}
 	else {
-		cout << "fillMatrix() doesn't pass the test" << endl;
+		cout << "fixMatrix() doesn't pass the test\n" << endl;
 	}
 	return ok;
 }

@@ -4,60 +4,59 @@ readMatrix::readMatrix(char* input, char*output) {
 	inputName = input;
 	outputName = output;
 	endLength = -1;
-	fillMatrix(inputName);
-	fixMatrix();
 }
 
 readMatrix:: ~readMatrix() {}
 
-void readMatrix::fillMatrix(char* fileName) {
-	FILE* target = fopen(fileName,"r");
+void readMatrix::fillMatrix() {
+	FILE* target = fopen(inputName,"r");
 	//set the end of the loop
-	fscanf(target,"%d",endLength);
+	fscanf(target,"%d",&endLength);
+	Matrix = new matrix(endLength,endLength);
 	//initialize loop elements
 	int maxRead = 0;
-	int counter = 0;
-	int readValue = -1;
-	while (counter < maxRead && maxRead < endLength) {
-		
-		fscanf(target,"%d",readValue);
-		Matrix->set(counter,maxRead,readValue);
+	int counter = 0; 
+	int readValue = -1; 
+	while (maxRead < endLength) {
 		if (counter < maxRead) {//judge if go to next column
+			fscanf(target, "%d", &readValue);
+			Matrix->set(counter, maxRead, readValue);
 			counter++;//not go to next column
 		}
 		else {//go to next column
 			counter = 0;
 			maxRead++;
-		}
+		} 
 	} 
 	fclose(target);
-	fflush(target);
-	fixMatrix(); 
 }
 
 void readMatrix::fixMatrix() {
-	//initialize the loop 
-	int rowStart = 1;
-	int row = rowStart;
+	//initialize the loop
+	int row = 0;
 	int col = 0;
-	//start of the loop  
-	while (row < endLength && col < endLength) {
-		int* adjValue = Matrix->getPointer(col,row);
-		Matrix->set(row, col, *adjValue);
-		if (row < endLength) {//judge if go to next column
-			row++;//not go to next column
+	//start the loop 
+	while (col < endLength) {//judge if go to next column 
+		if (row <= col) { //not go to next column 
+			// set adjenceny relationship	
+			if (row == col) {
+				Matrix->set(col,row,0);
+			}
+			else {
+				Matrix->set(col, row, *(Matrix->getPointer(row, col)));
+			}
+			row++;
 		}
 		else {//go to next column 
-			Matrix->set(rowStart,col,0);// set the connection to itself to 0 
-			//move to next column's start point
-			rowStart++;
-			row = rowStart;
+			row = 0;
 			col++;
 		}
 	}
 }
 
 void readMatrix::printMatrix() {
+	fillMatrix();
+	fixMatrix();
 	Matrix->printBoard(outputName);
 }
 

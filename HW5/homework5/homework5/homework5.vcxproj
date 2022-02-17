@@ -157,6 +157,7 @@
     <ClCompile Include="testReadMatrix.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <Text Include="demo.txt" />
     <Text Include="steps.txt" />
     <Text Include="test.txt" />
   </ItemGroup>
